@@ -1,2 +1,15 @@
+
+__pycache__/
+*.pyc
+
 .env
-.venv
+.venv/
+env/
+venv/
+ml_env/
+anaconda3/
+
+.vscode/
+
+.DS_Store
+Thumbs.db
