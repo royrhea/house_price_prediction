@@ -2,6 +2,10 @@ from flask import Flask,request,jsonify
 import util
 app=Flask(__name__)
 import datetime
+from flask_cors import CORS
+
+# ✅ Enable CORS globally
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/health", methods=["GET"])
 def health():
