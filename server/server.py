@@ -3,6 +3,7 @@ import util
 app=Flask(__name__)
 import datetime
 from flask_cors import CORS
+import os
 
 # ✅ Enable CORS globally
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -37,7 +38,10 @@ def predict_home_price():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-if __name__=="__main__":
+if __name__ == "__main__":
     print("starting python flask server for home price prediction...")
     util.load_saved_artifacts()
-    app.run(debug=True)
+    
+    port = int(os.environ.get("PORT", 5000))
+    
+    app.run(host="0.0.0.0", port=port)
