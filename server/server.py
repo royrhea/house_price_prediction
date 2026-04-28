@@ -1,6 +1,18 @@
 from flask import Flask,request,jsonify
 import util
 app=Flask(__name__)
+import datetime
+
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({
+        "status": "ok",
+        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()
+    }), 200
+
+@app.route("/")
+def home():
+    return "App is running"
 
 @app.route('/get_location_names',methods=['GET'])
 def get_location_names():
